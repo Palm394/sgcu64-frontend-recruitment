@@ -1,3 +1,4 @@
+# Assumption: จำนวนเริ่มต้นในแต่ละสถานที่ != 0 ให้ถือว่าลงทะเบียนด้วยวิธีอื่นๆ
 mock_data = [
   ['Mahamakut Building',20,[]],
   ['Sara Phra Kaew',9,[]],
@@ -15,12 +16,15 @@ def where_user_check_in(phone,req):
       else :
         print('Oh you move from',mock_data[place][0],'to',mock_data[req][0])
 
+        # add to new position
         mock_data[req][1] += 1
         mock_data[req][2].append(phone)
 
+        # remove from old position
         mock_data[place][1] -= 1
         mock_data[place][2].remove(phone)
         return
+  # case : ไม่เจอผู้ใช้ในฐานข้อมูลใดเลย (new user)
   mock_data[req][1] += 1
   mock_data[req][2].append(phone)
 
@@ -41,7 +45,7 @@ while True :
     phone_number = input('Enter phone number: ')
 
     for order in range(len(mock_data)):
-      print(str(order + 1) + '. ' + mock_data[order][0])
+      print('      '+str(order + 1) + '. ' + mock_data[order][0])
 
     user_place = int(input('Please input any number: ')) - 1
 
@@ -53,6 +57,7 @@ while True :
     print('Check out')
     phone_number = input('Enter phone number: ')
 
+    # find user in database and delete him,if didn't found don't do anything
     for place in mock_data:
       if phone_number in place[2]:
         place[1] -= 1
