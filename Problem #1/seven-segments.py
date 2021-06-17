@@ -25,4 +25,7 @@ if 59 >= int(data[1]) >= 0 and 59 >= int(data[2]) >= 0 :
         print(line)
 
 else:
-    print('error')
+    print('''
+         ·           ·
+__   __  ·  __   __  ·  __  __
+    ''')
