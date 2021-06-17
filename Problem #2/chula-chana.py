@@ -48,12 +48,19 @@ while True :
     where_user_check_in(phone = phone_number,req = user_place)
 
     print('Checking in',phone_number,'into',mock_data[user_place][0]) 
-    print('-----------------------------------------------------------------\n')
 
   elif action == 2 :
-    print(2)
+    print('Check out')
+    phone_number = input('Enter phone number: ')
+
+    for place in mock_data:
+      if phone_number in place[2]:
+        place[1] -= 1
+        place[2].remove(phone_number)
+
   elif action == 3 :
     print('Current Population')
     for order in range(len(mock_data)):
       print('      ' + str(order + 1) + '.',mock_data[order][0] + ':',mock_data[order][1])
 
+  print('-----------------------------------------------------------------\n')
