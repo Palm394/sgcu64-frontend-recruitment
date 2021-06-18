@@ -8,7 +8,15 @@ form.addEventListener("submit", event => {
     data[key] = value
     /* USER CODE Begin: Validate data */
   }
-  console.log(data)
+  if(data['password'] != data['confirmpassword'])
+  {
+    alert('รหัสผ่านกับยืนยันรหัสผ่านไม่ตรงกัน')
+    document.getElementsByName('password')[0].value = ""
+    document.getElementsByName('confirmpassword')[0].value = ""
+  }else
+  {
+    console.log(data)
+  }
   /* USER CODE Begin: What happened next after recieve form data (Optional) */
 
   /* USER CODE END: What happened next after recieve form data (Optional) */
