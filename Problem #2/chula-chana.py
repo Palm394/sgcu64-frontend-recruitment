@@ -47,12 +47,13 @@ while True :
     for order in range(len(mock_data)):
       print('      '+str(order + 1) + '. ' + mock_data[order][0])
 
-    user_place = int(input('Please input any number: ')) - 1
-
-    where_user_check_in(phone = phone_number,req = user_place)
-
-    print('Checking in',phone_number,'into',mock_data[user_place][0]) 
-
+    try :
+      user_place = int(input('Please input number: ')) - 1
+      where_user_check_in(phone = phone_number,req = user_place)
+      print('Checking in',phone_number,'into',mock_data[user_place][0]) 
+    except :
+      print('Your input is invalid. Try again!')
+      
   elif action == 2 :
     print('Check out')
     phone_number = input('Enter phone number: ')
